@@ -59,7 +59,7 @@ first(names, firstName => {
 
 // CODE HERE
 
-const last = (arr1, cb1) => cb1(arr1[6])
+const last = (arr, cb) => cb(arr[6])
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
@@ -81,19 +81,19 @@ last(names, lastName => {
 */
 
 // CODE HERE 
-
+const contains = (arr, name1, cb) => cb(name1)
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// contains(names, 'Colt', result => {
-//   if(result === true){
-//     console.log('Colt is in the array')
-//   } else {
-//     console.log('Colt is not in the array')
-//   }
-// })
+contains(names, 'Colt', result => {
+  if(result === true){
+    console.log('Colt is in the array')
+  } else {
+    console.log('Colt is not in the array')
+  }
+})
 
 
 
@@ -106,6 +106,18 @@ last(names, lastName => {
 */
 
 // CODE HERE
+const uniq = (arr, cb) => {
+    for(let i = 0; i < arr.length; i++){
+        for(let x = i + 1; x < arr.length; x++){
+            if(arr[i] === arr[x]){
+                arr.splice(x,1)
+                x--
+            }
+        }
+    }
+
+    cb(arr)
+}
 
 /*
   Invoke the uniq function, passing in the names array from above and a callback function.
@@ -115,7 +127,7 @@ last(names, lastName => {
 */
 
 // CODE HERE
-
+uniq(names, uniqArr => console.log(`The new names array with all the duplicate items removed is ${uniqArr}`))
 
 
 ////////// PROBLEM 6 //////////
@@ -126,6 +138,7 @@ last(names, lastName => {
 */
 
 // CODE HERE 
+const each = (arr, cb) => arr.forEach((el, ind) => cb(el, ind))
 
 
 /*
@@ -136,6 +149,7 @@ last(names, lastName => {
 */
 
 // CODE HERE
+each(names, (item, index) => console.log(`The item at index ${index} is ${item}`))
 
 
 ////////// PROBLEM 7 //////////
